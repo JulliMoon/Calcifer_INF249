@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA Asset Registry</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">A</div>
+            <span>AURA</span>
+        </div>
+
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+
+        <button class="nav"
+            onclick="location.href='dashboard.html'">
+            <span>▦</span>
+            Dashboard
+        </button>
+
+        <button class="nav"
+            onclick="location.href='projects.html'">
+            <span>▣</span>
+            Projects
+        </button>
+
+        <button class="nav active">
+            <span>▤</span>
+            Asset Registry
+        </button>
+
+        <button class="nav"
+onclick="location.href='audit-log.html'">
+            <span>◷</span>
+            Audit Log
+        </button>
+
+        <div class="menu-title platform">
+            PLATFORM
+        </div>
+
+        <button class="nav"
+onclick="location.href='integration-gateway.html'">
+            <span>⚡</span>
+            Integration Gateway
+        </button>
+
+        <button class="nav"
+onclick="location.href='settings.html'">
+            <span>⚙</span>
+            Settings
+        </button>
+
+    
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <strong>Asset Registry</strong>
+        </header>
+
+        <section class="registry-page">
+
+            <div class="registry-header">
+
+                <div>
+                    <h1>Asset Registry</h1>
+                    <p id="registrySubtitle">Manage all uploaded game assets.</p>
+                </div>
+
+                <button
+                    class="register-btn artist-only"
+                    onclick="openRegisterModal()"
+                >
+                    + Register Asset
+                </button>
+
+            </div>
+
+            <!-- FILTERS -->
+
+            <div class="registry-toolbar">
+
+                <input
+                    type="text"
+                    id="searchAsset"
+                    placeholder="Search assets..."
+                    onkeyup="renderAssets()"
+                >
+
+                <select id="filterStatus"
+                        onchange="renderAssets()">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option>
+                        In Progress
+                    </option>
+
+                    <option>
+                        Under Review
+                    </option>
+
+                    <option>
+                        Approved
+                    </option>
+
+                    <option>
+                        Revision Required
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table class="asset-table">
+
+                    <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Project</th>
+                        <th>Artist</th>
+                        <th>Version</th>
+                        <th>Status</th>
+                        <th>Integration</th>
+                        <th>Date Uploaded</th>
+                        <th>Actions</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="assetTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- REGISTER MODAL -->
+
+<div class="modal" id="registerModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeRegisterModal()">×</button>
+
+        <h2>Register Asset</h2>
+
+        <p>Add a new asset to the AURA pipeline.</p>
+
+        <label>Asset Name</label>
+        <input id="assetName" type="text" placeholder="e.g. hero_run_spritesheet">
+
+        <label>Asset Type</label>
+        <select id="assetType">
+            <option>Select type</option>
+            <option>2D Art</option>
+            <option>3D Mesh</option>
+            <option>UI Graphics</option>
+            <option>Animation</option>
+            <option>Audio</option>
+            <option>Cutscene</option>
+        </select>
+
+        <label>Project</label>
+        <select id="assetProject"></select>
+
+        <label>Artist</label>
+        <p class="static-field" id="assetArtistDisplay"></p>
+
+        <label>File</label>
+        <input type="file" id="assetFile">
+
+        <button class="submit" onclick="registerAsset()">Register Asset</button>
+
+    </div>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>
