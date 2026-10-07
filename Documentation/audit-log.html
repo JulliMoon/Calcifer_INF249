@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AURA Audit Log</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">A</div>
+            <span>AURA</span>
+        </div>
+
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+
+        <button class="nav"
+            onclick="location.href='dashboard.html'">
+            <span>▦</span>
+            Dashboard
+        </button>
+
+        <button class="nav"
+            onclick="location.href='projects.html'">
+            <span>▣</span>
+            Projects
+        </button>
+
+        <button class="nav"
+            onclick="location.href='asset-registry.html'">
+            <span>▤</span>
+            Asset Registry
+        </button>
+
+        <button class="nav active">
+            <span>◷</span>
+            Audit Log
+        </button>
+
+        <div class="menu-title platform">
+            PLATFORM
+        </div>
+
+        <button class="nav"
+            onclick="location.href='integration-gateway.html'">
+            <span>⚡</span>
+            Integration Gateway
+        </button>
+
+        <button class="nav"
+            onclick="location.href='settings.html'">
+            <span>⚙</span>
+            Settings
+        </button>
+
+    
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <strong>Audit Log</strong>
+        </header>
+
+        <section class="audit-page">
+
+            <div class="audit-header">
+
+                <div>
+                    <h1>Audit Log</h1>
+
+                    <p>
+                        Track all system actions and
+                        approval events.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- FILTERS -->
+
+            <div class="audit-filters">
+
+                <input
+                    id="searchAudit"
+                    type="text"
+                    placeholder="Search..."
+                    onkeyup="renderAuditLogs()"
+                >
+
+                <select
+                    id="actionFilter"
+                    onchange="renderAuditLogs()">
+
+                    <option value="">
+                        All Actions
+                    </option>
+
+                    <option>
+                        Uploaded
+                    </option>
+
+                    <option>
+                        Submitted
+                    </option>
+
+                    <option>
+                        Approved
+                    </option>
+
+                    <option>
+                        Revision Required
+                    </option>
+
+                    <option>
+                        Synchronized
+                    </option>
+
+                    <option>
+                        Webhook Test
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table class="audit-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Project</th>
+                        <th>Asset</th>
+                        <th>Version</th>
+                        <th>Result</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="auditTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>

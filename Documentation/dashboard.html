@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>AURA Dashboard</title>
+ 
+    <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body>
+ 
+<div class="app">
+ 
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+ 
+        <div class="logo">
+            <div class="logo-box">A</div>
+            <span>AURA</span>
+        </div>
+ 
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+ 
+        <button class="nav active">
+            <span>▦</span>
+            Dashboard
+        </button>
+ 
+        <button
+    class="nav"
+    onclick="window.location.href='projects.html'"
+>
+    <span>▣</span>
+    Projects
+</button>
+ 
+        <button class="nav"
+    onclick="window.location.href='asset-registry.html'">
+            <span>▤</span>
+            Asset Registry
+        </button>
+ 
+        <button class="nav"
+onclick="location.href='audit-log.html'">
+            <span>◷</span>
+            Audit Log
+        </button>
+ 
+        <div class="menu-title platform">
+            PLATFORM
+        </div>
+ 
+        <button class="nav"
+onclick="location.href='integration-gateway.html'">
+            <span>⚡</span>
+            Integration Gateway
+        </button>
+ 
+        <button class="nav"
+onclick="location.href='settings.html'">
+            <span>⚙</span>
+            Settings
+        </button>
+ 
+    
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+ 
+    </aside>
+ 
+ 
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+ 
+        <!-- TOP BAR -->
+        <header class="topbar">
+ 
+            <strong>Dashboard</strong>
+ 
+            <div class="top-right">
+ 
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+ 
+                <button class="profile">
+                    <div class="avatar">AD</div>
+ 
+                    <span>Administrator</span>
+ 
+                    <span>⌄</span>
+                </button>
+ 
+            </div>
+ 
+        </header>
+ 
+ 
+        <!-- ================= DASHBOARD ================= -->
+        <section class="dashboard">
+ 
+            <!-- TITLE -->
+            <div class="dashboard-header">
+ 
+                <div>
+ 
+                    <h1>Dashboard</h1>
+ 
+                    <p>
+                        Monitor your active game project,
+                        asset-review pipeline, and integration status.
+                    </p>
+ 
+                </div>
+ 
+                <button
+                    class="register-btn artist-only"
+                    onclick="openRegisterModal()"
+                >
+                    + Register Asset
+                </button>
+ 
+            </div>
+ 
+ 
+            <!-- ================= METRICS ================= -->
+ 
+            <div class="metrics">
+ 
+                <div class="metric">
+ 
+                    <div class="metric-header">
+                        <span>Active Assets</span>
+ 
+                        <div class="metric-icon">
+                            A
+                        </div>
+                    </div>
+ 
+                    <h2 id="metricActive">42</h2>
+ 
+                    <p>
+                        Assets currently in production
+                    </p>
+ 
+                </div>
+ 
+ 
+                <div class="metric">
+ 
+                    <div class="metric-header">
+                        <span>Under Review</span>
+ 
+                        <div class="metric-icon">
+                            R
+                        </div>
+                    </div>
+ 
+                    <h2 id="metricReview">12</h2>
+ 
+                    <p>
+                        Assets awaiting manager review
+                    </p>
+ 
+                </div>
+ 
+ 
+                <div class="metric">
+ 
+                    <div class="metric-header">
+                        <span>Ready to Sync</span>
+ 
+                        <div class="metric-icon">
+                            S
+                        </div>
+                    </div>
+ 
+                    <h2 id="metricReady">118</h2>
+ 
+                    <p>
+                        Eligible for integration processing
+                    </p>
+ 
+                </div>
+ 
+ 
+                <div class="metric" style="cursor:pointer" onclick="location.href='integration-gateway.html'">
+ 
+                    <div class="metric-header">
+                        <span>Integration Gateway</span>
+ 
+                        <div class="metric-icon">
+                            I
+                        </div>
+                    </div>
+ 
+                    <h2 id="metricGateway" class="online">
+                        ONLINE
+                    </h2>
+ 
+                    <p id="metricGatewayText">Webhook service is responding</p>
+ 
+                </div>
+ 
+            </div>
+ 
+ 
+            <!-- ================= CONTENT ================= -->
+ 
+            <div class="content">
+ 
+ 
+                <!-- ACTIVE PROJECT -->
+ 
+                <div class="project-card">
+ 
+                    <div class="project-information">
+ 
+                        <div class="project-image">
+                            G
+                        </div>
+ 
+ 
+                        <div class="project-details">
+ 
+                            <div class="active-project">
+                                ● Active Project
+                            </div>
+ 
+                            <h2 id="activeProjectName">Cyberpunk RPG</h2>
+ 
+                            <p id="activeProjectDesc"></p>
+ 
+ 
+                            <div class="project-meta">
+ 
+                                <span>
+                                    Manager:
+                                    <b id="activeProjectManager"></b>
+                                </span>
+ 
+                                <span>
+                                    Assigned Artist:
+                                    <b id="activeProjectArtist"></b>
+                                </span>
+ 
+                                <span>
+                                    Current Asset:
+                                    <b id="activeProjectAsset"></b>
+                                </span>
+ 
+                            </div>
+ 
+                        </div>
+ 
+                    </div>
+ 
+ 
+                    <!-- PROJECT PROGRESS -->
+ 
+                    <div class="progress">
+ 
+                        <div class="progress-label">
+ 
+                            <span>
+                                Project progress
+                            </span>
+ 
+                            <b id="projectProgressText">0%</b>
+ 
+                        </div>
+ 
+                        <div class="progress-bar">
+ 
+                            <div class="progress-fill" id="projectProgressFill"></div>
+ 
+                        </div>
+ 
+                    </div>
+ 
+                </div>
+ 
+ 
+ 
+                <!-- RECENT ACTIVITY -->
+ 
+                <div class="activity-card">
+ 
+                    <div class="card-title">
+ 
+                        <h2>
+                            Recent Activity
+                        </h2>
+ 
+                        <button onclick="location.href='audit-log.html'">View Audit Log</button>
+ 
+                    </div>
+ 
+ 
+                    <div id="activityList"></div>
+ 
+                </div>
+ 
+ 
+ 
+                <!-- PIPELINE -->
+ 
+                <div class="pipeline-card">
+ 
+                    <div class="card-title">
+ 
+                        <div>
+ 
+                            <h2>
+                                Asset Review Pipeline
+                            </h2>
+ 
+                            <p>
+                                Current state of assets moving through AURA.
+                            </p>
+ 
+                        </div>
+ 
+                        <button onclick="location.href='asset-registry.html'">Open Registry</button>
+ 
+                    </div>
+ 
+ 
+                    <div class="pipeline">
+ 
+                        <div class="pipeline-item">
+ 
+                            <div class="pipeline-number" id="pipeActive">42</div>
+ 
+                            <div>
+                                <b>Active</b>
+                                <small>In production</small>
+                            </div>
+ 
+                        </div>
+ 
+ 
+                        <div class="line"></div>
+ 
+ 
+                        <div class="pipeline-item">
+ 
+                            <div class="pipeline-number review" id="pipeReview">12</div>
+ 
+                            <div>
+                                <b>Review</b>
+                                <small>Manager approval</small>
+                            </div>
+ 
+                        </div>
+ 
+ 
+                        <div class="line"></div>
+ 
+ 
+                        <div class="pipeline-item">
+ 
+                            <div class="pipeline-number approved" id="pipeApproved">20</div>
+ 
+                            <div>
+                                <b>Approved</b>
+                                <small>Accepted assets</small>
+                            </div>
+ 
+                        </div>
+ 
+ 
+                        <div class="line"></div>
+ 
+ 
+                        <div class="pipeline-item">
+ 
+                            <div class="pipeline-number ready" id="pipeReady">118</div>
+ 
+                            <div>
+                                <b>Ready</b>
+                                <small>Integration eligible</small>
+                            </div>
+ 
+                        </div>
+ 
+                    </div>
+ 
+                </div>
+ 
+ 
+ 
+                <!-- NOTIFICATIONS -->
+ 
+                <div class="notifications-card">
+ 
+                    <div class="card-title">
+ 
+                        <h2>
+                            Notifications
+                        </h2>
+ 
+                        <button onclick="markRead()">
+                            Mark all read
+                        </button>
+ 
+                    </div>
+ 
+ 
+                    <div id="notificationList"></div>
+ 
+                </div>
+ 
+            </div>
+ 
+        </section>
+ 
+    </main>
+ 
+</div>
+ 
+ 
+<!-- ================= REGISTER ASSET MODAL ================= -->
+ 
+<div class="modal" id="registerModal">
+ 
+    <div class="modal-box">
+ 
+        <button class="close" onclick="closeRegisterModal()">×</button>
+ 
+        <h2>Register Asset</h2>
+ 
+        <p>Add a new asset to the AURA pipeline.</p>
+ 
+        <label>Asset Name</label>
+        <input id="assetName" type="text" placeholder="e.g. hero_run_spritesheet">
+ 
+        <label>Asset Type</label>
+        <select id="assetType">
+            <option>Select type</option>
+            <option>2D Art</option>
+            <option>3D Mesh</option>
+            <option>UI Graphics</option>
+            <option>Animation</option>
+            <option>Audio</option>
+            <option>Cutscene</option>
+        </select>
+ 
+        <label>Project</label>
+        <select id="assetProject"></select>
+ 
+        <label>Artist</label>
+        <p class="static-field" id="assetArtistDisplay"></p>
+ 
+        <label>File</label>
+        <input type="file" id="assetFile">
+ 
+        <button class="submit" onclick="registerAsset()">Register Asset</button>
+ 
+    </div>
+ 
+</div>
+ 
+<script src="script.js?v=6"></script>
+ 
+</body>
+</html>

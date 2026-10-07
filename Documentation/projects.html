@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Projects</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">A</div>
+            <span>AURA</span>
+        </div>
+
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+
+        <button class="nav" onclick="window.location.href='dashboard.html'">
+            <span>▦</span>
+            Dashboard
+        </button>
+
+        <button class="nav active">
+            <span>▣</span>
+            Projects
+        </button>
+
+        <button class="nav"
+            onclick="window.location.href='asset-registry.html'">
+            <span>▤</span>
+            Asset Registry
+        </button>
+
+        <button class="nav"
+onclick="location.href='audit-log.html'">
+            <span>◷</span>
+            Audit Log
+        </button>
+
+        <div class="menu-title platform">
+            PLATFORM
+        </div>
+
+        <button class="nav"
+onclick="location.href='integration-gateway.html'">
+            <span>⚡</span>
+            Integration Gateway
+        </button>
+
+        <button class="nav"
+onclick="location.href='settings.html'">
+            <span>⚙</span>
+            Settings
+        </button>
+
+    
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <strong>Projects</strong>
+
+            <div class="top-right">
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+
+                <button class="profile">
+                    <div class="avatar">AD</div>
+                    <span>Administrator</span>
+                </button>
+            </div>
+        </header>
+
+        <section class="projects-page">
+
+            <div class="projects-header">
+
+                <div>
+                    <h1>Projects</h1>
+                    <p>Manage all game development projects.</p>
+                </div>
+
+                <button class="register-btn" onclick="openProjectModal()">
+                    + Create Project
+                </button>
+
+            </div>
+
+            <div class="projects-toolbar">
+
+                <input type="text" id="projectSearch" placeholder="Search projects..." onkeyup="renderProjects()">
+
+                <select id="projectStatusFilter" onchange="renderProjects()">
+                    <option value="">All Status</option>
+                    <option>Pending</option>
+                    <option>For Revision</option>
+                    <option>Completed</option>
+                </select>
+
+                <select id="projectSort" onchange="renderProjects()">
+                    <option value="">Sort By</option>
+                    <option>Name</option>
+                    <option>Date Created</option>
+                    <option>Progress</option>
+                </select>
+
+            </div>
+
+            <div class="projects-grid" id="projectsGrid"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="modal" id="projectModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeProjectModal()">×</button>
+
+        <h2>Create Project</h2>
+
+        <label>Project Name</label>
+        <input id="projectName" type="text" placeholder="e.g. Space Racer">
+
+        <label>Description</label>
+        <input id="projectDesc" type="text">
+
+        <label>Manager</label>
+        <input id="projectManager" type="text" placeholder="e.g. Alex Cruz">
+
+        <button class="submit" onclick="createProject()">Create Project</button>
+
+    </div>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>

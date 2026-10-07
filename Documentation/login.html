@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AURA Login</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+<div class="login-wrap">
+
+    <div class="login-card">
+
+        <div class="logo login-logo">
+            <div class="logo-box">A</div>
+            <span>AURA</span>
+        </div>
+
+        <h1>Log in</h1>
+        <p>Sign in to manage or review game assets.</p>
+
+        <label>Username</label>
+        <input id="loginUsername" type="text" placeholder="e.g. artist" autocomplete="username">
+
+        <label>Password</label>
+        <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password">
+
+        <p class="login-error" id="loginError"></p>
+
+        <button class="submit login-submit" onclick="login()">Log In</button>
+
+        
+
+    </div>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>

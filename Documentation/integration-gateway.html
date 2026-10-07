@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AURA Integration Gateway</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-box">A</div>
+        <span>AURA</span>
+    </div>
+
+    <div class="menu-title">
+        WORKSPACE
+    </div>
+
+    <button class="nav"
+    onclick="location.href='dashboard.html'">
+        <span>▦</span>
+        Dashboard
+    </button>
+
+    <button class="nav"
+    onclick="location.href='projects.html'">
+        <span>▣</span>
+        Projects
+    </button>
+
+    <button class="nav"
+    onclick="location.href='asset-registry.html'">
+        <span>▤</span>
+        Asset Registry
+    </button>
+
+    <button class="nav"
+    onclick="location.href='audit-log.html'">
+        <span>◷</span>
+        Audit Log
+    </button>
+
+    <div class="menu-title platform">
+        PLATFORM
+    </div>
+
+    <button class="nav active">
+        <span>⚡</span>
+        Integration Gateway
+    </button>
+
+    <button class="nav"
+    onclick="location.href='settings.html'">
+        <span>⚙</span>
+        Settings
+    </button>
+
+
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+    </aside>
+
+<main class="main">
+
+<header class="topbar">
+    <strong>Integration Gateway</strong>
+</header>
+
+<section class="integration-page">
+
+<div class="integration-header">
+
+    <div>
+        <h1>Integration Gateway</h1>
+
+        <p>
+            Manage webhook integrations
+            and asset synchronization.
+        </p>
+    </div>
+
+</div>
+
+<!-- STATUS CARD -->
+
+<div class="gateway-status-card">
+
+    <div>
+
+        <h3>Status</h3>
+
+        <h2 id="gatewayStatus">
+            🟢 ONLINE
+        </h2>
+
+    </div>
+
+    <button
+    class="disable-btn"
+    onclick="toggleIntegration()">
+        Disable Integration
+    </button>
+
+</div>
+
+<!-- SETTINGS -->
+
+<div class="gateway-grid">
+
+<div class="gateway-card">
+
+<h3>Webhook Endpoint</h3>
+
+<input
+id="webhookEndpoint" onchange="saveGatewayConfig()"
+type="text"
+value="https://api.aura-gamehub.com/webhook">
+
+</div>
+
+<div class="gateway-card">
+
+<h3>External Storage</h3>
+
+<select id="storageType" onchange="saveGatewayConfig()">
+
+<option>AWS S3</option>
+
+<option>Google Drive</option>
+
+<option>Unity Cloud</option>
+
+<option>Unreal Pipeline</option>
+
+</select>
+
+</div>
+
+</div>
+
+<!-- EVENTS -->
+
+<div class="gateway-card">
+
+<h3>Enabled Events</h3>
+
+<div class="event-list">
+
+<label>
+<input type="checkbox" data-event="Asset Approved" onchange="saveGatewayConfig()">
+Asset Approved
+</label>
+
+<label>
+<input type="checkbox" data-event="Asset Synchronized" onchange="saveGatewayConfig()">
+Asset Synchronized
+</label>
+
+<label>
+<input type="checkbox" data-event="Revision Requested" onchange="saveGatewayConfig()">
+Revision Requested
+</label>
+
+<label>
+<input type="checkbox" data-event="Version Uploaded" onchange="saveGatewayConfig()">
+Version Uploaded
+</label>
+
+</div>
+
+</div>
+
+<!-- ACTIVITY -->
+
+<div class="gateway-card">
+
+<h3>Last Trigger</h3>
+
+<p id="lastTrigger">
+Sept 19, 2026 - 09:31 AM
+</p>
+
+<hr>
+
+<h3>Last Result</h3>
+
+<p id="lastResult">
+✓ Successful
+</p>
+
+</div>
+
+<!-- ACTIONS -->
+
+<div class="gateway-actions">
+
+<button
+class="register-btn"
+onclick="testWebhook()">
+
+Test Webhook
+
+</button>
+
+<button
+class="sync-btn"
+onclick="syncAssets()">
+
+Sync Ready Assets
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>

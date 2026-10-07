@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AURA Settings</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-box">A</div>
+        <span>AURA</span>
+    </div>
+
+    <div class="menu-title">
+        WORKSPACE
+    </div>
+
+    <button class="nav"
+        onclick="location.href='dashboard.html'">
+        <span>▦</span>
+        Dashboard
+    </button>
+
+    <button class="nav"
+        onclick="location.href='projects.html'">
+        <span>▣</span>
+        Projects
+    </button>
+
+    <button class="nav"
+        onclick="location.href='asset-registry.html'">
+        <span>▤</span>
+        Asset Registry
+    </button>
+
+    <button class="nav"
+        onclick="location.href='audit-log.html'">
+        <span>◷</span>
+        Audit Log
+    </button>
+
+    <div class="menu-title platform">
+        PLATFORM
+    </div>
+
+    <button class="nav"
+        onclick="location.href='integration-gateway.html'">
+        <span>⚡</span>
+        Integration Gateway
+    </button>
+
+    <button class="nav active">
+        <span>⚙</span>
+        Settings
+    </button>
+
+
+        <div class="sidebar-user">
+            <div class="sidebar-user-name" id="sidebarUserName">—</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+    </aside>
+
+<main class="main">
+
+<header class="topbar">
+    <strong>Settings</strong>
+</header>
+
+<section class="settings-page">
+
+<div class="settings-header">
+
+    <h1>Settings</h1>
+
+    <p>
+        Configure your AURA workspace.
+    </p>
+
+</div>
+
+<div class="settings-layout">
+
+    <!-- LEFT MENU -->
+
+    <div class="settings-sidebar">
+
+        <button class="settings-menu-btn" onclick="showTab('account', this)">
+            Account
+        </button>
+
+        <button class="settings-menu-btn admin-only" onclick="showTab('users', this)">
+            Users &amp; Roles
+        </button>
+
+        <button class="settings-menu-btn" onclick="showTab('asset', this)">
+            Asset Settings
+        </button>
+
+        <button class="settings-menu-btn" onclick="showTab('integration', this)">
+            Integration
+        </button>
+
+        <button class="settings-menu-btn" onclick="showTab('notifications', this)">
+            Notifications
+        </button>
+
+        <button class="settings-menu-btn" onclick="showTab('security', this)">
+            Security
+        </button>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="settings-content">
+
+        <!-- ACCOUNT -->
+
+        <div id="account"
+     class="settings-tab">
+
+<h2>Account Settings</h2>
+
+<label>Name</label>
+<input id="name"
+       value="Administrator">
+
+<label>Email</label>
+<input id="email"
+       value="admin@aura.com">
+
+<button
+onclick="saveProfile()"
+class="save-btn">
+
+Save Profile
+
+</button>
+
+</div>
+
+        <!-- USERS -->
+
+        <div id="users"
+class="settings-tab hidden">
+
+<h2>Users &amp; Roles</h2>
+
+<p>Create a login for a new hire. Only Admin accounts can see this list.</p>
+
+<label>Name</label>
+<input id="newAccountName" placeholder="e.g. Jamie Lee">
+
+<label>Username</label>
+<input id="newAccountUsername" placeholder="e.g. jamie">
+
+<label>Password</label>
+<input id="newAccountPassword" type="text" placeholder="e.g. jamie123">
+
+<label>Role</label>
+<select id="newAccountRole">
+
+<option>Artist</option>
+
+<option>Admin</option>
+
+</select>
+
+<button
+onclick="addAccount()"
+class="save-btn">
+
+Create Account
+
+</button>
+
+<h3 class="accounts-list-title">Existing Accounts</h3>
+
+<div id="accountsList"></div>
+
+</div>
+
+        <!-- ASSET -->
+
+        <div id="asset"
+class="settings-tab hidden">
+
+<h2>Asset Settings</h2>
+
+<label>
+Max Upload Size (MB)
+</label>
+
+<input
+id="maxUpload"
+value="500">
+
+<button
+onclick="saveAssetSettings()"
+class="save-btn">
+
+Save
+
+</button>
+
+</div>
+
+        <!-- INTEGRATION -->
+
+        <div id="integration"
+class="settings-tab hidden">
+
+<h2>Integration Settings</h2>
+
+<input
+id="webhook"
+
+value="https://api.aura.com/webhook">
+
+<button
+onclick="saveWebhook()"
+class="save-btn">
+
+Save Webhook
+
+</button>
+
+</div>
+
+        <!-- NOTIFICATIONS -->
+
+        <div id="notifications"
+class="settings-tab hidden">
+
+<h2>Notifications</h2>
+
+<label>
+
+<input
+id="approvalNotif"
+type="checkbox"
+checked>
+
+Approval Alerts
+
+</label>
+
+<br><br>
+
+<button
+onclick="saveNotifications()"
+class="save-btn">
+
+Save
+
+</button>
+
+</div>
+        <!-- SECURITY -->
+
+        <div id="security"
+class="settings-tab hidden">
+
+<h2>Security</h2>
+
+<label>
+
+Session Timeout
+
+</label>
+
+<input
+id="sessionTimeout"
+value="30">
+
+<button
+onclick="saveSecurity()"
+class="save-btn">
+
+Save
+
+</button>
+
+</div>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="script.js?v=6"></script>
+
+</body>
+</html>
